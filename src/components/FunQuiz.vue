@@ -17,38 +17,38 @@
 
                     <div class="row mt-3" v-show="startQuiz || score >= 0">
                         <div class="col-md-12" >
-                            <p class="text-primary  animatedEnd animatedFadeInUp fadeInUp" v-if="score >= 55 && questionIndex === quiz.questions.length">
+                            <p class="text-primary  animatedEnd animatedFadeInUp fadeInUpEnd" v-if="score >= 55 && questionIndex === quiz.questions.length">
                                 Looks like we should grab a cup of coffee! <br> Just call me. My treat!<br>
-                                 <i class=" animatedEnd animatedFadeInUp fadeInUp fa fa-smile fa-5x text-primary mt-2"></i>
+                                 <i class=" animatedEnd animatedFadeInUp fadeInUpEnd fa fa-smile fa-5x text-primary mt-2"></i>
                                 
                             </p>
-                            <p class="text-danger animatedEnd animatedFadeInUp fadeInUp" v-if="score < 55 && questionIndex === quiz.questions.length">
+                            <p class="text-danger animatedEnd animatedFadeInUp fadeInUpEnd" v-if="score < 55 && questionIndex === quiz.questions.length">
                                 Looks like we're not really a match eh..?<br>
                                 But you may still contact me, maybe we could work something out?<br>
-                                <i class=" animatedEnd animatedFadeInUp fadeInUp fa fa-frown fa-5x text-danger mt-2"></i>
+                                <i class=" animatedEnd animatedFadeInUp fadeInUpEnd fa fa-frown fa-5x text-danger mt-2"></i>
                             </p>
                         </div>
 
                         
                     </div>
 
-                    <button v-show="!startQuiz" class=" animatedEnd animatedFadeInUp fadeInUp btn btn-lg btn-primary" v-on:click="start">Find out if we are a match</button>
+                    <button v-show="!startQuiz" class=" animatedEnd animatedFadeInUp fadeInUpEnd btn btn-lg btn-primary" v-on:click="start">Find out if we are a match</button>
 
                     <div class="" v-for="(question, index) in quiz.questions" :key="index">
                         <div class="row" v-show="index === questionIndex && startQuiz"> 
-                            <div class="col-md-12 mb-5">
+                            <div class="col-md-12 mb-md-5 mb-2">
                                 <div >
                                     <h3 class="text-primary mb-2" >{{question.text}}</h3>
                                 </div>
                             </div>
-                            <div class="mb-5" v-for="(response, index) in question.responses" :key="response" v-bind:class="{ 'col-md-6': question.responses.length <= 2, 'col-md-4': question.responses.length >= 3 }" >
+                            <div class="mb-md-5 mb-2" v-for="(response, index) in question.responses" :key="response" v-bind:class="{ 'col-md-6': question.responses.length <= 2, 'col-md-4': question.responses.length >= 3 }" >
 
-                               <div class="mb-5 mr-4">
+                               <div class="mb-md-5 mb-2 mr-4">
                                     <div class="animated animatedFadeInUp fadeInUp" v-show="response.correct && clicked && (UserAnswer === response.index)">
-                                        <i class="fa fa-smile fa-2x text-success text-center absolute"></i>
+                                        <i class="fa fa-thumbs-up fa-2x text-success text-center absolute"></i>
                                     </div>
                                     <div class="animated animatedFadeInUp fadeInUp" v-show="!response.correct && clicked && (UserAnswer === response.index)">
-                                        <i class="fa fa-frown fa-2x text-danger  text-center absolute"></i>
+                                        <i class="fa fa-thumbs-down fa-2x text-danger  text-center absolute"></i>
                                     </div>
                                </div>
 
@@ -209,8 +209,10 @@ position: absolute;
 
     to {
         transform: translate3d(0,0,0);
-        opacity: 1
+        
     }
+    0%,100% { opacity: 0; }
+    20% { opacity: 1; }
 }
 
 @-webkit-keyframes fadeInUp {
@@ -220,16 +222,44 @@ position: absolute;
 
     to {
         transform: translate3d(0,0,0);
+        
+    }
+    0%,100% { opacity: 0; }
+    20% { opacity: 1; }
+}
+
+
+@keyframes fadeInUpEnd {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
         opacity: 1
     }
+
+}
+
+@-webkit-keyframes fadeInUpEnd {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+
 }
 
 
 
+
 .animated {
-    animation-duration: 0.3s;
+    animation-duration: 0.6s;
     animation-fill-mode: both;
-    -webkit-animation-duration: 0.3s;
+    -webkit-animation-duration: 0.6s;
     -webkit-animation-fill-mode: both;
 }
 
@@ -248,6 +278,12 @@ position: absolute;
     opacity: 0;
     animation-name: fadeInUp;
     -webkit-animation-name: fadeInUp;
+}
+
+.fadeInUpEnd {
+    opacity: 0;
+    animation-name: fadeInUpEnd;
+    -webkit-animation-name: fadeInUpEnd;
 }
 
 </style>
