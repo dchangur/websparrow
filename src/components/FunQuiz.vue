@@ -7,7 +7,7 @@
             <!-- Icon Divider-->
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line "></div>
-                <div class="divider-custom-icon "><i class=" fas fa-star"></i></div>
+                <div class="divider-custom-icon "><i class=" fas fa-handshake"></i></div>
                 <div class="divider-custom-line "></div>
             </div>
 
@@ -78,7 +78,7 @@
 
 <script>
 
-var quiz = {
+let quiz = {
   title: 'Work with me',
   questions: [
     {

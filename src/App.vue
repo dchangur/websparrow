@@ -3,16 +3,14 @@
     <Navbar />
     <!-- Masthead-->
     <Header />
-    <!-- Portfolio Section-->
-    <Portfolio />
     <!-- About Section-->
     <About />
-    <!-- Contact Section-->
-    <Contact />
-
+    <!-- Portfolio Section-->
+    <Portfolio />
     <!-- FunQuiz-->
     <FunQuiz />
-
+    <!-- Contact Section-->
+    <Contact />
     <!-- Footer-->
     <Footer />
 </template>
